@@ -82,21 +82,21 @@ export default function AddItem({ addItem }) {
   };
 
   return (
-    <div className="min-h-[80vh] flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-blue-100 transition-all duration-500">
+    <div className="min-h-[80vh] flex items-center justify-center bg-neutral-50 transition-all duration-500">
       <div
-        className={`w-full max-w-xl mx-auto p-2 sm:p-6 transition-all duration-700 ${
+        className={`w-full max-w-xl mx-auto p-2 sm:p-8 transition-all duration-700 ${
           animateCard ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-        } `}
+        } animate-scale-in`}
       >
-        <h1 className="text-3xl font-extrabold mb-6 text-center text-blue-700 drop-shadow-sm tracking-tight">
+        <h1 className="text-3xl font-extrabold mb-8 text-center text-neutral-800 drop-shadow-sm tracking-tight">
           Add New Item
         </h1>
         <form
           onSubmit={handleFormSubmit}
-          className="space-y-5 bg-white/90 backdrop-blur-md p-4 sm:p-8 rounded-2xl shadow-2xl border border-blue-100 transition-all duration-300"
+          className="space-y-6 bg-white/95 backdrop-blur-md p-6 sm:p-10 rounded-xl shadow-xl border border-neutral-200 transition-all duration-300"
         >
           <div>
-            <label className="block font-semibold mb-1 text-blue-800">
+            <label className="block font-semibold mb-1 text-neutral-800">
               Item Name
             </label>
             <input
@@ -104,7 +104,7 @@ export default function AddItem({ addItem }) {
               name="name"
               value={itemForm.name}
               onChange={handleInputChange}
-              className="w-full border border-blue-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-200 bg-blue-50/50 placeholder:text-blue-300"
+              className="w-full border border-neutral-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-neutral-300 transition-all duration-150 bg-neutral-50 placeholder:text-neutral-400"
               placeholder="e.g. Nike Running Shoes"
             />
             {formErrors.name && (
@@ -114,21 +114,21 @@ export default function AddItem({ addItem }) {
             )}
           </div>
           <div>
-            <label className="block font-semibold mb-1 text-blue-800">
+            <label className="block font-semibold mb-1 text-neutral-800">
               Item Type
             </label>
             <select
               name="type"
               value={itemForm.type}
               onChange={handleInputChange}
-              className="w-full border border-blue-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-200 bg-blue-50/50 text-blue-700"
+              className="w-full border border-neutral-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-neutral-300 transition-all duration-150 bg-neutral-50 text-neutral-700"
             >
               <option value="">Select type</option>
               {ITEM_TYPE_OPTIONS.map((typeOption) => (
                 <option
                   key={typeOption}
                   value={typeOption}
-                  className="text-blue-700"
+                  className="text-neutral-700"
                 >
                   {typeOption}
                 </option>
@@ -141,14 +141,14 @@ export default function AddItem({ addItem }) {
             )}
           </div>
           <div>
-            <label className="block font-semibold mb-1 text-blue-800">
+            <label className="block font-semibold mb-1 text-neutral-800">
               Item Description
             </label>
             <textarea
               name="description"
               value={itemForm.description}
               onChange={handleInputChange}
-              className="w-full border border-blue-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-200 bg-blue-50/50 placeholder:text-blue-300"
+              className="w-full border border-neutral-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-neutral-300 transition-all duration-150 bg-neutral-50 placeholder:text-neutral-400"
               rows={3}
               placeholder="Describe the item..."
             />
@@ -159,7 +159,7 @@ export default function AddItem({ addItem }) {
             )}
           </div>
           <div>
-            <label className="block font-semibold mb-1 text-blue-800">
+            <label className="block font-semibold mb-1 text-neutral-800">
               Cover Image URL
             </label>
             <input
@@ -167,7 +167,7 @@ export default function AddItem({ addItem }) {
               name="coverImage"
               value={itemForm.coverImage}
               onChange={handleInputChange}
-              className="w-full border border-blue-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-200 bg-blue-50/50 placeholder:text-blue-300"
+              className="w-full border border-neutral-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-neutral-300 transition-all duration-150 bg-neutral-50 placeholder:text-neutral-400"
               placeholder="https://..."
             />
             {formErrors.coverImage && (
@@ -177,7 +177,7 @@ export default function AddItem({ addItem }) {
             )}
           </div>
           <div>
-            <label className="block font-semibold mb-1 text-blue-800">
+            <label className="block font-semibold mb-1 text-neutral-800">
               Additional Image URLs (comma-separated)
             </label>
             <input
@@ -185,7 +185,7 @@ export default function AddItem({ addItem }) {
               name="additionalImages"
               value={itemForm.additionalImages}
               onChange={handleInputChange}
-              className="w-full border border-blue-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-200 bg-blue-50/50 placeholder:text-blue-300"
+              className="w-full border border-neutral-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-neutral-300 transition-all duration-150 bg-neutral-50 placeholder:text-neutral-400"
               placeholder="https://..., https://..."
             />
             {formErrors.additionalImages && (
@@ -193,18 +193,18 @@ export default function AddItem({ addItem }) {
                 {formErrors.additionalImages}
               </div>
             )}
-            <div className="text-gray-500 text-xs mt-1">
+            <div className="text-neutral-400 text-xs mt-1">
               Enter URLs separated by commas
             </div>
           </div>
           <button
             type="submit"
-            className="w-full bg-gradient-to-r from-blue-500 to-blue-700 text-white px-6 py-2 rounded-xl hover:from-blue-600 hover:to-blue-800 font-semibold shadow-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="w-full bg-neutral-800 text-white px-6 py-2 rounded-lg hover:bg-neutral-700 font-semibold shadow transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-neutral-400 animate-scale-in"
           >
             Add Item
           </button>
           {showSuccess && (
-            <div className="text-green-600 font-semibold mt-2 animate-bounce-in">
+            <div className="text-green-600 font-semibold mt-2 animate-fade-in">
               Item successfully added
             </div>
           )}
