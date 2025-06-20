@@ -19,16 +19,19 @@ A modern React + Vite web application for managing and viewing items, styled wit
 
 ## Getting Started
 
-1. **Install dependencies:**
-   ```sh
-   npm install
-   ```
-2. **Start the development server:**
-   ```sh
-   npm run dev
-   ```
-3. **Open your browser:**
-   Visit [http://localhost:5173](http://localhost:5173) (or the port shown in your terminal).
+1. Clone the repository :https://github.com/rishiraj2603/Mini-E-commerce
+
+2. Install dependencies: npm i
+
+```bash
+npm install
+```
+
+3. Start the development server:
+
+```bash
+npm run dev
+```
 
 ## Project Structure
 
