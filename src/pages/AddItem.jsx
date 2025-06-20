@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const ITEM_TYPE_OPTIONS = [
   "Shirt",
@@ -29,6 +28,11 @@ export default function AddItem({ addItem }) {
   });
   const [formErrors, setFormErrors] = useState({});
   const [showSuccess, setShowSuccess] = useState(false);
+  const [animateCard, setAnimateCard] = useState(false);
+
+  useEffect(() => {
+    setAnimateCard(true);
+  }, []);
 
   const handleInputChange = (e) => {
     setItemForm({ ...itemForm, [e.target.name]: e.target.value });
@@ -78,106 +82,134 @@ export default function AddItem({ addItem }) {
   };
 
   return (
-    <div className="max-w-xl mx-auto">
-      <h1 className="text-3xl font-bold mb-6">Add New Item</h1>
-      <form
-        onSubmit={handleFormSubmit}
-        className="space-y-5 bg-white p-6 rounded shadow"
+    <div className="min-h-[80vh] flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-blue-100 transition-all duration-500">
+      <div
+        className={`w-full max-w-xl mx-auto p-2 sm:p-6 transition-all duration-700 ${
+          animateCard ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        } `}
       >
-        <div>
-          <label className="block font-semibold mb-1">Item Name</label>
-          <input
-            type="text"
-            name="name"
-            value={itemForm.name}
-            onChange={handleInputChange}
-            className="w-full border rounded px-3 py-2"
-          />
-          {formErrors.name && (
-            <div className="text-red-600 text-sm mt-1">{formErrors.name}</div>
-          )}
-        </div>
-        <div>
-          <label className="block font-semibold mb-1">Item Type</label>
-          <select
-            name="type"
-            value={itemForm.type}
-            onChange={handleInputChange}
-            className="w-full border rounded px-3 py-2"
-          >
-            <option value="">Select type</option>
-            {ITEM_TYPE_OPTIONS.map((typeOption) => (
-              <option key={typeOption} value={typeOption}>
-                {typeOption}
-              </option>
-            ))}
-          </select>
-          {formErrors.type && (
-            <div className="text-red-600 text-sm mt-1">{formErrors.type}</div>
-          )}
-        </div>
-        <div>
-          <label className="block font-semibold mb-1">Item Description</label>
-          <textarea
-            name="description"
-            value={itemForm.description}
-            onChange={handleInputChange}
-            className="w-full border rounded px-3 py-2"
-            rows={3}
-          />
-          {formErrors.description && (
-            <div className="text-red-600 text-sm mt-1">
-              {formErrors.description}
-            </div>
-          )}
-        </div>
-        <div>
-          <label className="block font-semibold mb-1">Cover Image URL</label>
-          <input
-            type="text"
-            name="coverImage"
-            value={itemForm.coverImage}
-            onChange={handleInputChange}
-            className="w-full border rounded px-3 py-2"
-          />
-          {formErrors.coverImage && (
-            <div className="text-red-600 text-sm mt-1">
-              {formErrors.coverImage}
-            </div>
-          )}
-        </div>
-        <div>
-          <label className="block font-semibold mb-1">
-            Additional Image URLs (comma-separated)
-          </label>
-          <input
-            type="text"
-            name="additionalImages"
-            value={itemForm.additionalImages}
-            onChange={handleInputChange}
-            className="w-full border rounded px-3 py-2"
-          />
-          {formErrors.additionalImages && (
-            <div className="text-red-600 text-sm mt-1">
-              {formErrors.additionalImages}
-            </div>
-          )}
-          <div className="text-gray-500 text-xs mt-1">
-            Enter URLs separated by commas
-          </div>
-        </div>
-        <button
-          type="submit"
-          className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 font-semibold"
+        <h1 className="text-3xl font-extrabold mb-6 text-center text-blue-700 drop-shadow-sm tracking-tight">
+          Add New Item
+        </h1>
+        <form
+          onSubmit={handleFormSubmit}
+          className="space-y-5 bg-white/90 backdrop-blur-md p-4 sm:p-8 rounded-2xl shadow-2xl border border-blue-100 transition-all duration-300"
         >
-          Add Item
-        </button>
-        {showSuccess && (
-          <div className="text-green-600 font-semibold mt-2">
-            Item successfully added
+          <div>
+            <label className="block font-semibold mb-1 text-blue-800">
+              Item Name
+            </label>
+            <input
+              type="text"
+              name="name"
+              value={itemForm.name}
+              onChange={handleInputChange}
+              className="w-full border border-blue-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-200 bg-blue-50/50 placeholder:text-blue-300"
+              placeholder="e.g. Nike Running Shoes"
+            />
+            {formErrors.name && (
+              <div className="text-red-600 text-sm mt-1 animate-fade-in">
+                {formErrors.name}
+              </div>
+            )}
           </div>
-        )}
-      </form>
+          <div>
+            <label className="block font-semibold mb-1 text-blue-800">
+              Item Type
+            </label>
+            <select
+              name="type"
+              value={itemForm.type}
+              onChange={handleInputChange}
+              className="w-full border border-blue-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-200 bg-blue-50/50 text-blue-700"
+            >
+              <option value="">Select type</option>
+              {ITEM_TYPE_OPTIONS.map((typeOption) => (
+                <option
+                  key={typeOption}
+                  value={typeOption}
+                  className="text-blue-700"
+                >
+                  {typeOption}
+                </option>
+              ))}
+            </select>
+            {formErrors.type && (
+              <div className="text-red-600 text-sm mt-1 animate-fade-in">
+                {formErrors.type}
+              </div>
+            )}
+          </div>
+          <div>
+            <label className="block font-semibold mb-1 text-blue-800">
+              Item Description
+            </label>
+            <textarea
+              name="description"
+              value={itemForm.description}
+              onChange={handleInputChange}
+              className="w-full border border-blue-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-200 bg-blue-50/50 placeholder:text-blue-300"
+              rows={3}
+              placeholder="Describe the item..."
+            />
+            {formErrors.description && (
+              <div className="text-red-600 text-sm mt-1 animate-fade-in">
+                {formErrors.description}
+              </div>
+            )}
+          </div>
+          <div>
+            <label className="block font-semibold mb-1 text-blue-800">
+              Cover Image URL
+            </label>
+            <input
+              type="text"
+              name="coverImage"
+              value={itemForm.coverImage}
+              onChange={handleInputChange}
+              className="w-full border border-blue-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-200 bg-blue-50/50 placeholder:text-blue-300"
+              placeholder="https://..."
+            />
+            {formErrors.coverImage && (
+              <div className="text-red-600 text-sm mt-1 animate-fade-in">
+                {formErrors.coverImage}
+              </div>
+            )}
+          </div>
+          <div>
+            <label className="block font-semibold mb-1 text-blue-800">
+              Additional Image URLs (comma-separated)
+            </label>
+            <input
+              type="text"
+              name="additionalImages"
+              value={itemForm.additionalImages}
+              onChange={handleInputChange}
+              className="w-full border border-blue-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-200 bg-blue-50/50 placeholder:text-blue-300"
+              placeholder="https://..., https://..."
+            />
+            {formErrors.additionalImages && (
+              <div className="text-red-600 text-sm mt-1 animate-fade-in">
+                {formErrors.additionalImages}
+              </div>
+            )}
+            <div className="text-gray-500 text-xs mt-1">
+              Enter URLs separated by commas
+            </div>
+          </div>
+          <button
+            type="submit"
+            className="w-full bg-gradient-to-r from-blue-500 to-blue-700 text-white px-6 py-2 rounded-xl hover:from-blue-600 hover:to-blue-800 font-semibold shadow-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          >
+            Add Item
+          </button>
+          {showSuccess && (
+            <div className="text-green-600 font-semibold mt-2 animate-bounce-in">
+              Item successfully added
+            </div>
+          )}
+        </form>
+      </div>
     </div>
   );
 }

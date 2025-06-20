@@ -74,15 +74,23 @@ function App() {
 
   return (
     <Router>
-      <nav className="bg-blue-600 text-white px-8 py-4 flex gap-6 items-center">
-        <Link to="/" className="font-bold text-lg hover:underline">
-          View Items
-        </Link>
-        <Link to="/add" className="font-bold text-lg hover:underline">
-          Add Item
-        </Link>
+      <nav className="bg-blue-600 text-white px-4 sm:px-8 py-4 flex flex-wrap gap-4 sm:gap-6 items-center justify-between shadow-md sticky top-0 z-10 transition-all duration-300">
+        <div className="flex gap-4 items-center w-full sm:w-auto justify-between">
+          <Link
+            to="/"
+            className="font-bold text-lg hover:underline focus:outline-none focus:ring-2 focus:ring-white transition-all duration-200"
+          >
+            View Items
+          </Link>
+          <Link
+            to="/add"
+            className="font-bold text-lg hover:underline focus:outline-none focus:ring-2 focus:ring-white transition-all duration-200"
+          >
+            Add Item
+          </Link>
+        </div>
       </nav>
-      <div className="max-w-5xl mx-auto py-8 px-2">
+      <div className="max-w-5xl mx-auto py-6 px-2 sm:px-6 transition-all duration-300">
         <Routes>
           <Route path="/" element={<ViewItems items={items} />} />
           <Route path="/add" element={<AddItem addItem={addItem} />} />
